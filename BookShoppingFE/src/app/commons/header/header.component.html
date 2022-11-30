@@ -1,0 +1,202 @@
+<!--<header>-->
+<!--  <div class="container d-flex">-->
+<!--    <a class="navbar-brand text-success logo h1 align-self-center" id="logo" (click)="resetUrl()">Beeway</a>-->
+<!--    <div class="d-flex-justify-sp-between w-100">-->
+
+<!--      <div class="header__search">-->
+<!--        <form class="d-flex border-none" (ngSubmit)="search()" [formGroup]="formSearch">-->
+<!--          <input type="text" class="input-search" formControlName="searchValue"-->
+<!--                 placeholder="Tìm kiếm theo tên sách, thể loại, tác giả,...">-->
+<!--          <button class="btn btn-search" type="submit" [disabled]="formSearch.invalid">-->
+<!--            <i class="bi bi-search"></i>-->
+<!--            Tìm kiếm-->
+<!--          </button>-->
+<!--        </form>-->
+<!--      </div>-->
+
+<!--      <div class="header__option-user-wrapper">-->
+<!--&lt;!&ndash;        <div class="header__option-user header__cart" (click)="viewCart()">&ndash;&gt;-->
+<!--&lt;!&ndash;          <i class="bi bi-cart3 header__option-user-icon"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div style="position: absolute; top: 10px; right: 3px; width: 20px;&ndash;&gt;-->
+<!--&lt;!&ndash;          height: 20px;background-color: red; border-radius: 50%" class="d-flex-center-all">&ndash;&gt;-->
+<!--&lt;!&ndash;            <span style="line-height: 20px; padding-top: 1px">{{cartItems?.length}}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="cart-wrapper" (click)="$event.stopImmediatePropagation()">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="cart-header d-flex-align-center">&ndash;&gt;-->
+<!--&lt;!&ndash;              <i class="bi bi-cart3 cart-header-icon"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;              <span>({{cartItems?.length}})</span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <div class="cart-body">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="cart-body-no-item" *ngIf="cartItems?.length <= 0">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <img src="https://cdn0.fahasa.com/skin//frontend/ma_vanese/fahasa/images/checkout_cart/ico_emptycart.svg"&ndash;&gt;-->
+<!--&lt;!&ndash;                         alt="" class="cart-body-no-item-image">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <p style="margin-bottom: 50px">&ndash;&gt;-->
+<!--&lt;!&ndash;                      Chưa có sản phẩm nào&ndash;&gt;-->
+<!--&lt;!&ndash;                  </p>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="cart-body-has-item" *ngIf="cartItems?.length > 0">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="cart-product-item d-flex" *ngFor="let cartItem of cartItems" (click)="viewDetailItem(cartItem?.book.id)">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <img src="{{cartItem?.book.avatar}}" class="cart-product-image">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="cart-product-description">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p class="cart-product-name">&ndash;&gt;-->
+<!--&lt;!&ndash;                      {{cartItem?.book.name}}&ndash;&gt;-->
+<!--&lt;!&ndash;                    </p>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <p class="cart-product-price">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <strong>{{cartItem?.book.price | currency: 'VND'}}</strong>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <span class="cart-product-quantity">&ndash;&gt;-->
+<!--&lt;!&ndash;                        x{{cartItem.amount}}&ndash;&gt;-->
+<!--&lt;!&ndash;                      </span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </p>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="cart-footer d-flex-justify-sp-between" *ngIf="cartItems?.length > 0">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="d-flex-center-all d-flex-direction-column">&ndash;&gt;-->
+<!--&lt;!&ndash;                <span class="color-black">Tổng cộng</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                <span class="cart-total-price">{{totalPriceCart | currency: 'VND'}}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="cart-detail">&ndash;&gt;-->
+<!--&lt;!&ndash;                <button class="btn cart-detail-btn" routerLink="/cart">Xem giỏ hàng</button>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--        <div class="header__option-user select-options-account-wrapper" *ngIf="!isLogin">-->
+<!--          <i class="bi bi-person header__option-user-icon"></i>-->
+<!--          <ul class="select-options-account">-->
+<!--            <li class="select-item-account" (click)="openModal('login')">-->
+<!--              Đăng nhập-->
+<!--            </li>-->
+<!--            <li class="select-item-account" (click)="openModal('register')">-->
+<!--              Đăng ký-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </div>-->
+
+<!--        <div class="header__option-user select-options-account-wrapper" *ngIf="isLogin">-->
+<!--          <img [src]="user?.imageUrl" alt="Avatar" *ngIf="isLogin" class="avatar-user">-->
+<!--          <p class="username">-->
+<!--            {{user?.name}}-->
+<!--          </p>-->
+<!--          <ul class="select-options-account" *ngIf="isLogin">-->
+<!--            <li class="select-item-account" routerLink="/info/me">-->
+<!--              Quản lý tài khoản-->
+<!--            </li>-->
+<!--            <li class="select-item-account" (click)="viewCart()">-->
+<!--              Đơn hàng của tôi-->
+<!--            </li>-->
+<!--            <li class="select-item-account" (click)="logout()">-->
+<!--              Đăng xuất-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</header>-->
+<!-- Header-->
+<nav class="navbar navbar-expand-lg navbar-light shadow">
+  <div class="container d-flex justify-content-between align-items-center">
+    <a class="navbar-brand text-success logo h1 align-self-center" href="/">
+      Obrand
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+         id="templatemo_main_nav">
+      <div class="flex-fill">
+        <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+          <li *ngIf="isLogin && (role == 'ROLE_ADMIN')" class="nav-item">
+            <a class="nav-link" routerLink="/manager">Quản lí sản phẩm</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#list">Tin Tức</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#footer">Liên hệ</a>
+          </li>
+          <li>
+            <div class="input-group">
+              <form class="d-flex border-none" (ngSubmit)="search()" [formGroup]="formSearch">
+                <input type="text" class="form-control" id="inputMobileSearch" formControlName="searchValue" placeholder="Tin tức...">
+                <button class="input-group-text loginBtn" type="submit" [disabled]="formSearch.invalid">
+                  <i class="fa fa-fw fa-search text-dark mr-2"></i>
+                </button>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="navbar align-self-center ">
+<!--        <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">-->
+<!--        //-->
+<!--        </div>-->
+<!--        <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">-->
+<!--          <i class="fa fa-fw fa-search text-dark mr-2"></i>-->
+<!--        </a>-->
+        <!-- icon-cart -->
+<!--        <a *ngIf="isLogin" class="nav-icon position-relative text-decoration-none loginBtn" (click)="viewCart()">-->
+<!--          <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>-->
+<!--          <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">{{cartItems?.length}}</span>-->
+<!--        </a>-->
+        <a *ngIf="!isLogin" class="nav-icon position-relative text-decoration-none loginBtn" title="Đăng nhập" (click)="openModal('login')">
+          <i class="fa fa-fw fa-user text-dark mr-3"></i>
+        </a>
+        <div class="header__option-user select-options-account-wrapper" *ngIf="isLogin">
+          <img src="data:image/png;base64,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" alt="Avatar" *ngIf="isLogin" class="avatar-user">
+          <p class="username">
+            {{user?.name}}
+          </p>
+          <ul class="select-options-account" *ngIf="isLogin">
+            <li class="select-item-account" routerLink="#">
+              Tài khoản
+            </li>
+<!--            <li class="select-item-account" (click)="viewCart()">-->
+<!--              Giỏ hàng-->
+<!--            </li>-->
+            <li class="select-item-account" (click)="logout()">
+              Đăng xuất
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Close Header -->
+
+<!-- Modal search-->
+<!--<div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
+<!--     aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-lg" role="document">-->
+<!--    <div class="w-100 pt-1 mb-5 text-right">-->
+<!--      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--    </div>-->
+<!--    <div class="header__search">-->
+<!--      <form class="d-flex border-none" (ngSubmit)="search()" [formGroup]="formSearch">-->
+<!--        <input type="text" class="input-search" formControlName="searchValue"-->
+<!--               placeholder="Tìm kiếm theo tên sách, thể loại, tác giả,...">-->
+<!--        <button class="input-group-text bg-success text-light" type="submit" [disabled]="formSearch.invalid">-->
+<!--          <i class="fa fa-fw fa-search text-white"></i>-->
+<!--        </button>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--    <form action="" method="get" class="modal-content modal-body border-0 p-0">-->
+<!--      <div class="input-group mb-2">-->
+<!--        <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Nhập tên sách ...">-->
+<!--        <button type="submit" class="input-group-text bg-success text-light">-->
+<!--          <i class="fa fa-fw fa-search text-white"></i>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+
+<app-authentication *ngIf="isOpenModal" [typeForm]="typeForm" (newItemEvent)="closeModal()"></app-authentication>
